@@ -79,7 +79,7 @@ public class CombatManagerImpl implements CombatManager {
                         System.out.println("Vous avez obtenu un : " + diceResult);
                     }
                     int heroDmg = hero.useSpecialPower(enemy, diceResult);
-                    System.out.println("Vous infligez : " + heroDmg + "dommages");
+                    System.out.println("Vous infligez : " + heroDmg + " dommages");
                     System.out.println("Il vous reste " + hero.getMana() + " mana");
                     enemy.takeDamages(heroDmg);
 

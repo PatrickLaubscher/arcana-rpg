@@ -88,7 +88,7 @@ public class Hero extends Character implements SpecialPower {
 
     // Check potion number and throw exception
     public void checkRemainingPotion() throws CheckPotionException {
-        if(this.getPotionNb() == 0) {
+        if(this.getPotionNb() <= 0) {
             throw new CheckPotionException("Désolé, vous n'avez plus de potions.");
         }
 

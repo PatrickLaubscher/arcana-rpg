@@ -1,5 +1,8 @@
 package rpg.interfaces;
 
-public class SpecialPower {
-    void useSpecialPower(Character target) {}
+import rpg.characters.Enemy;
+
+public interface SpecialPower {
+    // use special power to deal extra damage but use mana
+    int useSpecialPower(Enemy target, int diceResult);
 }

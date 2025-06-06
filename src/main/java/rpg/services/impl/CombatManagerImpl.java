@@ -7,7 +7,23 @@ import java.util.Scanner;
 
 public class CombatManagerImpl implements CombatManager {
 
+    private int enemyCount = 1;
+
+    public int getEnemyCount() {
+        return enemyCount;
+    }
+
+    public void setEnemyCount(int enemyCount) {
+        this.enemyCount = enemyCount;
+    }
+
     public void combatTurn(Hero hero, Enemy enemy, Scanner sc) {
+
+            // Display enemi number
+            System.out.println("Enemi " + enemyCount);
+
+            // Display enemy health point
+            System.out.println("Point de vie restant " + enemy.getName() + " : " + enemy.getHealth());
 
             System.out.println(
                     "Choisissez une action :"
@@ -35,13 +51,29 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Vous infligez : " + heroDmg);
                     enemy.takeDamages(heroDmg);
                 }
-                case 2 -> System.out.println("Le héro utilise son pouvoir spécial");
+                case 2 -> {
+                    System.out.println("Vous utilisez votre pouvoir magique");
+                    int diceResult = DiceRollerImpl.getInstance().throwDice();
+                    if (diceResult == 6) {
+                        System.out.println("Critique ! dommages doubles !");
+                    } else {
+                        System.out.println("Vous avez obtenu un : " + diceResult);
+                    }
+                    int heroDmg = hero.useSpecialPower(enemy, diceResult);
+                    System.out.println("Vous infligez : " + heroDmg);
+                    System.out.println("Il vous reste " + hero.getMana() + " mana");
+                    enemy.takeDamages(heroDmg);
+                }
                 case 3 -> System.out.println("Le héro boit une potion");
                 default -> throw new IllegalStateException("Commande non valable: " + choice);
             }
 
             // If the enemy is still alive, it strikes back
             this.attackReturn(hero, enemy, sc);
+
+            // Display remaing health point
+            this.remainingHealthPoint(hero);
+
     }
 
 
@@ -51,7 +83,7 @@ public class CombatManagerImpl implements CombatManager {
                 System.out.println(enemy.getName() + " attaque " + hero.getName());
                 int diceResult = DiceRollerImpl.getInstance().throwDice();
                 if(diceResult == 6) {
-                    System.out.println("Attaque critique ! dommages doublés !");
+                    System.out.println("Attaque critique ! dommages doubles !");
                 }
                 int enemyDmg = enemy.attack(hero, diceResult);
                 System.out.println(enemy.getName() + "inflige : " + enemyDmg);
@@ -59,6 +91,7 @@ public class CombatManagerImpl implements CombatManager {
             } else {
                 System.out.println("Bravo ! " + hero.getName() + " a tué " + enemy.getName());
                 hero.setKillerCount(hero.getKillerCount() + 1);
+                this.enemyCount++;
             }
     }
 
@@ -72,6 +105,12 @@ public class CombatManagerImpl implements CombatManager {
         } else {
             return new Dragon();
         }
+    }
+
+    public void remainingHealthPoint(Hero hero) {
+        System.out.println(
+                "Il vous reste " + hero.getHealth() + " points de vie"
+        );
     }
 
 }

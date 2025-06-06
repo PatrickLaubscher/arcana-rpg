@@ -3,7 +3,7 @@ package rpg.characters;
 public class Dragon extends Enemy {
 
     public Dragon() {
-        super("Dragon", 300, 45,40);
+        super("Dragon", 200, 35,30);
     }
 
 }

@@ -14,13 +14,16 @@ public interface CombatManager {
 
 
     // combat turn
-    public void combatTurn(Hero hero, Enemy enemy, Scanner sc);
+    void combatTurn(Hero hero, Enemy enemy, Scanner sc);
 
     // if the enemy is still alive it attacks back
-    public void attackReturn(Hero hero, Enemy enemy, Scanner sc);
+    void attackReturn(Hero hero, Enemy enemy, Scanner sc);
 
     // create new enemy randomly on random base 100
-    public Enemy generateNewEnemy();
+    Enemy generateNewEnemy();
+
+    // display remaining health point
+    void remainingHealthPoint(Hero hero);
 
     // save score in file scores.txt
 

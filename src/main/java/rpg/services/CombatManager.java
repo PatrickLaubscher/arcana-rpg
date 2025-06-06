@@ -1,12 +1,13 @@
 package rpg.services;
 
-public class CombatManager {
+public interface CombatManager {
 
+    // score enemy count
 
     // combat turn check hero health
 
-    // find enemy randomly
+    // create new enemy randomly
 
-
+    // save score in file scores.txt
 
 }

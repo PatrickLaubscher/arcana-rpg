@@ -33,7 +33,7 @@ public class Hero extends Character implements SpecialPower {
     }
 
     public Hero(String name) {
-        super(name, 400, 40, 30);
+        super(name, 400, 70, 45);
         this.mana = 50;
         this.potionNb = 1;
     }

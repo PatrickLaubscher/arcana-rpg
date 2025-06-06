@@ -3,6 +3,6 @@ package rpg.services;
 public interface DiceRoller {
 
     // throw 6 faces dice - on 6 critical damages doubled
-    public static int throwDice() {};
+    public int throwDice();
 
 }

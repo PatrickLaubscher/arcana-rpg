@@ -1,7 +1,5 @@
 package rpg.characters;
 
-import rpg.services.impl.DiceRollerImpl;
-
 public abstract class Character {
 
     // character name
@@ -53,9 +51,7 @@ public abstract class Character {
     }
 
     // Attack another character
-    public int attack(Character target) {
-
-        int diceResult = DiceRollerImpl.getInstance().throwDice();
+    public int attack(Character target, int diceResult) {
 
         double atkFactor;
         switch (diceResult) {

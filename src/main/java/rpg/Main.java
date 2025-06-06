@@ -1,9 +1,10 @@
 package rpg;
 
-import rpg.characters.Character;
 import rpg.characters.Enemy;
 import rpg.characters.Hero;
-import rpg.services.impl.DiceRollerImpl;
+import rpg.services.impl.CombatManagerImpl;
+
+import java.util.Scanner;
 
 public class Main {
 
@@ -12,11 +13,21 @@ public class Main {
 
         Hero hero = new Hero("Henry");
         Enemy enemy = new Enemy();
-        DiceRollerImpl dice = new DiceRollerImpl();
+        CombatManagerImpl turn = new CombatManagerImpl();
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println(hero.attack(enemy, dice));
+        while(hero.isAlive()) {
 
+            if(!enemy.isAlive()){
+                enemy = turn.generateNewEnemy();
+            }
 
+            turn.combatTurn(hero, enemy, sc);
+
+        }
+
+        System.out.println("Fin de partie");
+        sc.close();
     }
 
 

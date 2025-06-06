@@ -1,7 +1,5 @@
 package rpg.characters;
 
-import rpg.interfaces.SpecialPower;
-
 public class Hero extends Character {
 
     private int killerCount;

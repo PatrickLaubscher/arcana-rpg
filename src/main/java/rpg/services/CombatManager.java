@@ -3,26 +3,16 @@ package rpg.services;
 import rpg.characters.Enemy;
 import rpg.characters.Hero;
 
-import java.util.Scanner;
-
 public interface CombatManager {
 
     // score enemy count
 
+
+    // input player choice during combat turn throw exception
+
+
     // combat turn
-    public void combatTurn(Hero hero, Enemy enemy); {
-
-        try(Scanner sc = new Scanner(System.in)) {
-            
-            switch (choice) {
-                case 1 -> hero.attack(enemy);
-                default ->
-            }
-
-        }
-
-
-    }
+    public void combatTurn(Hero hero, Enemy enemy);
 
     // create new enemy randomly
 

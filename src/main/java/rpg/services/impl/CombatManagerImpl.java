@@ -2,6 +2,8 @@ package rpg.services.impl;
 
 import rpg.characters.*;
 import rpg.services.CombatManager;
+import rpg.services.exceptions.CheckManaException;
+import rpg.services.exceptions.CheckPotionException;
 
 import java.util.Scanner;
 
@@ -59,6 +61,11 @@ public class CombatManagerImpl implements CombatManager {
                     enemy.takeDamages(heroDmg);
                 }
                 case 2 -> {
+                    try {
+                        hero.checkManaBalance(hero.getPowerMana());
+                    } catch (CheckManaException e) {
+                        System.out.println(e.getMessage());
+                    }
                     System.out.println("Vous utilisez votre pouvoir magique");
                     int diceResult = DiceRollerImpl.getInstance().throwDice();
                     if (diceResult == 6) {
@@ -70,8 +77,14 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Vous infligez : " + heroDmg);
                     System.out.println("Il vous reste " + hero.getMana() + " mana");
                     enemy.takeDamages(heroDmg);
+
                 }
                 case 3 -> {
+                    try {
+                        hero.checkRemainingPotion();
+                    } catch (CheckPotionException e) {
+                        System.out.println(e.getMessage());
+                    }
                     System.out.println(hero.getName() + " boit une potion");
                     hero.useHealthPotion();
                     System.out.println("Hummm ça fait du bien ! Votre vitalité est restaurée");

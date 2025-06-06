@@ -14,9 +14,19 @@ application {
     mainClass.set("rpg.Main")
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "rpg.Main"
+    }
+}
+
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+tasks.withType<JavaExec> {
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
 }
 
 tasks.test {

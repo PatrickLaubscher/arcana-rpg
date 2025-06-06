@@ -6,6 +6,8 @@ public abstract class Character {
     private String name;
     // base health
     private int health;
+    // max health
+    private int maxHealth;
     // base atk
     private int atk;
     // base def
@@ -27,6 +29,14 @@ public abstract class Character {
         this.health = health;
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public int getAtk() {
         return atk;
     }
@@ -43,9 +53,11 @@ public abstract class Character {
         this.def = def;
     }
 
-    public Character(String name, int health, int atk, int def) {
+
+    public Character(String name, int maxHealth, int atk, int def) {
         this.name = name;
-        this.health = health;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
         this.atk = atk;
         this.def = def;
     }

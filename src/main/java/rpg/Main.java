@@ -27,7 +27,8 @@ public class Main {
 
         }
 
-        System.out.println("Fin de partie");
+        System.out.println(hero.getName() + " est tombé.");
+        System.out.println("vous avez tué " + hero.getKillerCount() + " ennemis");
         sc.close();
     }
 

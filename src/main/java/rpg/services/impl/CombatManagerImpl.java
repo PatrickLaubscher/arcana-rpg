@@ -20,19 +20,26 @@ public class CombatManagerImpl implements CombatManager {
     public void combatTurn(Hero hero, Enemy enemy, Scanner sc) {
 
             // Display enemi number
-            System.out.println("Enemi " + enemyCount);
+            System.out.println("Ennemi " + enemyCount);
 
             // Display enemy health point
             System.out.println("Point de vie restant " + enemy.getName() + " : " + enemy.getHealth());
+
+            // Display hero info
+            System.out.println("Il vous reste :");
+            System.out.println(hero.getHealth() + " pts de vie");
+            System.out.println(hero.getMana() + " pts de mana");
+            System.out.println(hero.getPotionNb() + " potion");
+            System.out.println();
 
             System.out.println(
                     "Choisissez une action :"
             );
             System.out.println(
-                    "1 - Attaque"
+                    "1 - Attaquer"
             );
             System.out.println(
-                    "2 - Pouvoir magique"
+                    "2 - Utiliser votre pouvoir magique"
             );
             System.out.println(
                     "3 - Utiliser une potion"
@@ -64,7 +71,11 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Il vous reste " + hero.getMana() + " mana");
                     enemy.takeDamages(heroDmg);
                 }
-                case 3 -> System.out.println("Le héro boit une potion");
+                case 3 -> {
+                    System.out.println(hero.getName() + " boit une potion");
+                    hero.useHealthPotion();
+                    System.out.println("Hummm ça fait du bien ! Votre vitalité est restaurée");
+                }
                 default -> throw new IllegalStateException("Commande non valable: " + choice);
             }
 
@@ -86,7 +97,7 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Attaque critique ! dommages doubles !");
                 }
                 int enemyDmg = enemy.attack(hero, diceResult);
-                System.out.println(enemy.getName() + "inflige : " + enemyDmg);
+                System.out.println(enemy.getName() + " inflige : " + enemyDmg);
                 hero.takeDamages(enemyDmg);
             } else {
                 System.out.println("Bravo ! " + hero.getName() + " a tué " + enemy.getName());

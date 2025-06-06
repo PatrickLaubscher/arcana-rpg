@@ -6,6 +6,7 @@ public class Hero extends Character implements SpecialPower {
 
     private int killerCount;
     private int mana;
+    private int potionNb;
 
     public int getKillerCount() {
         return killerCount;
@@ -23,11 +24,21 @@ public class Hero extends Character implements SpecialPower {
         this.mana = mana;
     }
 
+    public int getPotionNb() {
+        return potionNb;
+    }
+
+    public void setPotionNb(int potionNb) {
+        this.potionNb = potionNb;
+    }
+
     public Hero(String name) {
         super(name, 400, 40, 30);
         this.mana = 50;
+        this.potionNb = 1;
     }
 
+    // use special power and decrease mana points
     public int useSpecialPower(Enemy target, int diceResult) {
 
         double atkFactor;
@@ -50,6 +61,12 @@ public class Hero extends Character implements SpecialPower {
             return 0;
         }
 
+    }
+
+    // use potion to recover max health
+    public void useHealthPotion() {
+        this.setPotionNb(this.getPotionNb() - 1);
+        this.setHealth(this.getMaxHealth());
     }
 
 }

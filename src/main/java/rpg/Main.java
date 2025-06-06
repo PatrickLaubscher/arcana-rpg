@@ -11,17 +11,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Hero hero = new Hero("Henry");
-        Enemy enemy = new Enemy();
         CombatManagerImpl turn = new CombatManagerImpl();
+        Hero hero = new Hero("Henry");
+        Enemy enemy = turn.generateNewEnemy();
+        System.out.println("Vous avancez et un " + enemy.getName() + " se trouve devant vous.");
         Scanner sc = new Scanner(System.in);
 
         while(hero.isAlive()) {
 
             if(!enemy.isAlive()){
                 enemy = turn.generateNewEnemy();
+                System.out.println("Vous avancez et un " + enemy.getName() + " se trouve devant vous.");
             }
-
             turn.combatTurn(hero, enemy, sc);
 
         }

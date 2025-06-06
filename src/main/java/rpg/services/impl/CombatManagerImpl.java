@@ -1,7 +1,6 @@
 package rpg.services.impl;
 
-import rpg.characters.Enemy;
-import rpg.characters.Hero;
+import rpg.characters.*;
 import rpg.services.CombatManager;
 
 import java.util.Scanner;
@@ -11,27 +10,26 @@ public class CombatManagerImpl implements CombatManager {
     public void combatTurn(Hero hero, Enemy enemy, Scanner sc) {
 
             System.out.println(
-                    "Choisissez une action pour votre héro :"
+                    "Choisissez une action :"
             );
             System.out.println(
-                    "1 - Votre héro attaque"
+                    "1 - Attaque"
             );
             System.out.println(
-                    "2 - Votre héro utilise son pouvoir spécial"
+                    "2 - Pouvoir magique"
             );
             System.out.println(
-                    "3 - Votre héro utilise une potion"
+                    "3 - Utiliser une potion"
             );
             int choice = sc.nextInt();
             switch (choice) {
                 case 1 -> {
                     System.out.println(hero.getName() + " attaque " + enemy.getName());
-                    System.out.println("Vous jetez le dé");
                     int diceResult = DiceRollerImpl.getInstance().throwDice();
                     if (diceResult == 6) {
-                        System.out.println("Critique ! vos dégâts sont doublés !");
+                        System.out.println("Critique ! dommages doublés !");
                     } else {
-                        System.out.println("Résultat : " + diceResult);
+                        System.out.println("Vous avez obtenu un : " + diceResult);
                     }
                     int heroDmg = hero.attack(enemy, diceResult);
                     System.out.println("Vous infligez : " + heroDmg);
@@ -53,7 +51,7 @@ public class CombatManagerImpl implements CombatManager {
                 System.out.println(enemy.getName() + " attaque " + hero.getName());
                 int diceResult = DiceRollerImpl.getInstance().throwDice();
                 if(diceResult == 6) {
-                    System.out.println("Attaque critique ! dégâts doublés !");
+                    System.out.println("Attaque critique ! dommages doublés !");
                 }
                 int enemyDmg = enemy.attack(hero, diceResult);
                 System.out.println(enemy.getName() + "inflige : " + enemyDmg);
@@ -66,7 +64,14 @@ public class CombatManagerImpl implements CombatManager {
 
 
     public Enemy generateNewEnemy() {
-        return new Enemy();
+        int rand = (int)(Math.random()*100);
+        if(rand < 51) {
+            return new Goblin();
+        } else if(rand < 91) {
+            return new Troll();
+        } else {
+            return new Dragon();
+        }
     }
 
 }

@@ -19,7 +19,7 @@ public interface CombatManager {
     // if the enemy is still alive it attacks back
     public void attackReturn(Hero hero, Enemy enemy, Scanner sc);
 
-    // create new enemy randomly
+    // create new enemy randomly on random base 100
     public Enemy generateNewEnemy();
 
     // save score in file scores.txt

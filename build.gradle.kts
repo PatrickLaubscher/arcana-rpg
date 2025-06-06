@@ -19,6 +19,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
+tasks.withType<JavaExec> {
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
+}
+
 tasks.test {
     useJUnitPlatform()
 }

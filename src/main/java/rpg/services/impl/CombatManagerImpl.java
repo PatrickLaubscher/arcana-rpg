@@ -59,6 +59,8 @@ public class CombatManagerImpl implements CombatManager {
                     int heroDmg = hero.attack(enemy, diceResult);
                     System.out.println("Vous infligez : " + heroDmg);
                     enemy.takeDamages(heroDmg);
+                    // If the enemy is still alive, it strikes back
+                    this.attackReturn(hero, enemy, sc);
                 }
                 case 2 -> {
                     try {
@@ -77,7 +79,8 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Vous infligez : " + heroDmg);
                     System.out.println("Il vous reste " + hero.getMana() + " mana");
                     enemy.takeDamages(heroDmg);
-
+                    // If the enemy is still alive, it strikes back
+                    this.attackReturn(hero, enemy, sc);
                 }
                 case 3 -> {
                     try {
@@ -92,8 +95,6 @@ public class CombatManagerImpl implements CombatManager {
                 default -> throw new IllegalStateException("Commande non valable: " + choice);
             }
 
-            // If the enemy is still alive, it strikes back
-            this.attackReturn(hero, enemy, sc);
 
             // Display remaing health point
             this.remainingHealthPoint(hero);
@@ -122,7 +123,7 @@ public class CombatManagerImpl implements CombatManager {
 
     public Enemy generateNewEnemy() {
         int rand = (int)(Math.random()*100);
-        if(rand < 51) {
+        if(rand < 61) {
             return new Goblin();
         } else if(rand < 91) {
             return new Troll();

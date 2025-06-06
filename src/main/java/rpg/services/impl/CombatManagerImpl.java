@@ -57,7 +57,7 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Vous avez obtenu un : " + diceResult);
                 }
                 int heroDmg = hero.attack(enemy, diceResult);
-                System.out.println("Vous infligez : " + heroDmg);
+                System.out.println("Vous infligez : " + heroDmg + " dégâts");
                 enemy.takeDamages(heroDmg);
                 // If the enemy is still alive, it strikes back
                 if (!enemy.isAlive()) {
@@ -124,7 +124,7 @@ public class CombatManagerImpl implements CombatManager {
         System.out.println(enemy.getName() + " attaque " + hero.getName());
         int diceResult = DiceRollerImpl.getInstance().throwDice();
         if(diceResult == 6) {
-            System.out.println("Attaque critique ! dommages doubles !");
+            System.out.println("Attaque critique ! dommages doublés !");
         }
         int enemyDmg = enemy.attack(hero, diceResult);
         System.out.println(enemy.getName() + " inflige : " + enemyDmg);

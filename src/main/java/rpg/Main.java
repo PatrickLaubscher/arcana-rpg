@@ -23,14 +23,16 @@ public class Main {
 
             if(!enemy.isAlive()){
                 enemy = turn.generateNewEnemy();
+                System.out.println("***");
                 System.out.println("Vous avancez et un " + enemy.getName() + " se trouve devant vous.");
             }
             turn.combatTurn(hero, enemy, sc);
 
         }
-
+        System.out.println();
+        System.out.println("*+ | **");
         System.out.println(hero.getName() + " est tombé.");
-        System.out.println("vous avez tué " + hero.getKillerCount() + " ennemis");
+        System.out.println("Bravo, vous avez tué " + hero.getKillerCount() + " ennemis");
         file.createNewFile(hero);
         sc.close();
     }

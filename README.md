@@ -4,6 +4,8 @@ Welcome in this RPG Java project 🧙‍♂️⚔️
 
 The game is in very **early stage development**. For the moment, you can only test the basics combat feature. 
 
+Use your IDE console to choose your action (1-Basic attack, 2-Use magical powern, 3-Use Health potion).
+
 More to come soon 
 
 
@@ -12,7 +14,7 @@ More to come soon
 To run the application, copy/paste in the IDE console the following cmd line : java -jar build/libs/arcana-rpg-1.0-SNAPSHOT.jar
 
 
-### Config
+### Dev environment development
 
 openjdk version "21.0.6" 2025-01-21 LTS
 Intellij

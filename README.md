@@ -17,6 +17,7 @@ To run the application, copy/paste in the IDE console the following cmd line : j
 ### Dev environment development
 
 openjdk version "21.0.6" 2025-01-21 LTS
+
 Intellij
 
 

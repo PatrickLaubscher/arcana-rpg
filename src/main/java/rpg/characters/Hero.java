@@ -33,7 +33,7 @@ public class Hero extends Character implements SpecialPower {
     }
 
     public Hero(String name) {
-        super(name, 400, 70, 45);
+        super(name, 300, 70, 45);
         this.mana = 50;
         this.potionNb = 1;
     }
@@ -48,7 +48,7 @@ public class Hero extends Character implements SpecialPower {
             default -> throw new IllegalStateException("Unexpected value: " + diceResult);
         }
 
-        int powerAtk = 100;
+        int powerAtk = 150;
         int powerMana = 10;
 
         // Use of mana points

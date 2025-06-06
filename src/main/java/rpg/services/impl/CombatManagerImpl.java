@@ -52,7 +52,7 @@ public class CombatManagerImpl implements CombatManager {
                 System.out.println(hero.getName() + " attaque " + enemy.getName());
                 int diceResult = DiceRollerImpl.getInstance().throwDice();
                 if (diceResult == 6) {
-                    System.out.println("Critique ! dommages doublés !");
+                    System.out.println("Critique ! dégâts doublés !");
                 } else {
                     System.out.println("Vous avez obtenu un : " + diceResult);
                 }
@@ -74,12 +74,12 @@ public class CombatManagerImpl implements CombatManager {
                     System.out.println("Vous utilisez votre pouvoir magique");
                     int diceResult = DiceRollerImpl.getInstance().throwDice();
                     if (diceResult == 6) {
-                        System.out.println("Critique ! dommages doubles !");
+                        System.out.println("Critique ! dégâts doublés !");
                     } else {
                         System.out.println("Vous avez obtenu un : " + diceResult);
                     }
                     int heroDmg = hero.useSpecialPower(enemy, diceResult);
-                    System.out.println("Vous infligez : " + heroDmg + " dommages");
+                    System.out.println("Vous infligez : " + heroDmg + " dégâts");
                     System.out.println("Il vous reste " + hero.getMana() + " mana");
                     enemy.takeDamages(heroDmg);
 
@@ -112,8 +112,10 @@ public class CombatManagerImpl implements CombatManager {
         }
 
         // Display remaing health point
-        this.remainingHealthPoint(hero);
-
+        if(hero.isAlive()) {
+            this.remainingHealthPoint(hero);
+        }
+        
     }
 
 

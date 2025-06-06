@@ -11,7 +11,12 @@ More to come soon
 
 ## 🎮 Run the game
 
-To run the application, copy/paste in the IDE console the following cmd line : java -jar build/libs/arcana-rpg-1.0-SNAPSHOT.jar
+To run the application 
+
+Copy/paste in the IDE console the following cmd lines :
+
+./gradlew build 
+java -jar build/libs/arcana-rpg-1.0-SNAPSHOT.jar
 
 
 ### Dev environment development

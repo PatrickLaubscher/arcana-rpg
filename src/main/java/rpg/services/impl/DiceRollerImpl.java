@@ -6,13 +6,14 @@ public class DiceRollerImpl implements DiceRoller {
 
     private static DiceRollerImpl instance;
 
-    public DiceRollerImpl getInstance() {
+    public static DiceRollerImpl getInstance() {
         if (instance == null) {
             instance = new DiceRollerImpl();
         }
         return instance;
     }
 
+    // Similate throwing a 6 faces dice
     public int throwDice() {
         return (int)(6.0 * Math.random()) + 1;
     }

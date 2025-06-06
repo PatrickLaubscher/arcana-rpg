@@ -45,17 +45,38 @@ public abstract class Character {
         this.def = def;
     }
 
+    public Character(String name, int health, int atk, int def) {
+        this.name = name;
+        this.health = health;
+        this.atk = atk;
+        this.def = def;
+    }
+
     // Attack another character
-    public int attack(Character target, DiceRollerImpl diceRoller) {
+    public int attack(Character target) {
 
-        int damages = this.atk * diceRoller.throwDice() - target.getDef();
+        int diceResult = DiceRollerImpl.getInstance().throwDice();
 
+        double atkFactor;
+        switch (diceResult) {
+            case 1 -> atkFactor = 0.5;
+            case 2,3,4 -> atkFactor = 1;
+            case 5 -> atkFactor = 1.2;
+            case 6 -> atkFactor = 2;
+            default -> throw new IllegalStateException("Unexpected value: " + diceResult);
+        }
+
+        int damages = (int) Math.round(this.atk*atkFactor) - target.getDef();
         if(damages > 0) {
             return damages;
         } else {
             return 0;
         }
     }
+
+
+    //
+
 
     // Take damage from another character
     public void takeDamages(int damages) {

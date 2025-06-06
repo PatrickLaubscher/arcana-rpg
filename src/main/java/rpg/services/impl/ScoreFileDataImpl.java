@@ -1,4 +1,4 @@
-﻿package rpg.services.impl;
+package rpg.services.impl;
 
 import rpg.characters.Hero;
 import rpg.services.ScoreFileData;
@@ -19,7 +19,7 @@ public class ScoreFileDataImpl implements ScoreFileData {
         // add student
         lignes.add(" *** ");
         lignes.add("Palmares de : " + hero.getName());
-        lignes.add(hero.getKillerCount() + "ennemi(s) vaincu(s)");
+        lignes.add(hero.getKillerCount() + " ennemi(s) vaincu(s)");
         lignes.add(" *** ");
 
         // process creation file and writting

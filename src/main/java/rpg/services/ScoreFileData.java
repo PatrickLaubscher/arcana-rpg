@@ -1,4 +1,4 @@
-﻿package rpg.services;
+package rpg.services;
 
 import rpg.characters.Hero;
 

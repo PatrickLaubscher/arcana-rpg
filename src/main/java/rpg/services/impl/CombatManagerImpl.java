@@ -133,7 +133,7 @@ public class CombatManagerImpl implements CombatManager {
             System.out.println("Attaque critique ! dommages doublés !");
         }
         int enemyDmg = enemy.attack(hero, diceResult);
-        System.out.println(enemy.getName() + " inflige : " + enemyDmg);
+        System.out.println(enemy.getName() + " inflige : " + enemyDmg + " dégâts");
         hero.takeDamages(enemyDmg);
     }
 

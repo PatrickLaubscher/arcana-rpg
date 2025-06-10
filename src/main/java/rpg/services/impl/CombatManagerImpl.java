@@ -22,16 +22,20 @@ public class CombatManagerImpl implements CombatManager {
     public void combatTurn(Hero hero, Enemy enemy, Scanner sc) {
 
         // Display enemi number
-        System.out.println("Ennemi " + enemyCount);
-
+        System.out.println("-------------------------------------------------------");
+        System.out.println("| Ennemi " + enemyCount);
         // Display enemy health point
-        System.out.println("Point de vie restant " + enemy.getName() + " : " + enemy.getHealth());
+        System.out.println("Point de vie restant au " + enemy.getName() + " : " + enemy.getHealth());
+        System.out.println("-------------------------------------------------------");
+        System.out.println();
 
         // Display hero info
-        System.out.println("Il vous reste :");
-        System.out.println(hero.getHealth() + " pts de vie");
-        System.out.println(hero.getMana() + " pts de mana");
-        System.out.println(hero.getPotionNb() + " potion");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("| Il vous reste :                                      ");
+        System.out.println("|---------------- " + hero.getHealth() + " pts de vie  ");
+        System.out.println("|---------------- " + hero.getMana() + " pts de mana   ");
+        System.out.println("|---------------- " + hero.getPotionNb() + " potion    ");
+        System.out.println("-------------------------------------------------------");
         System.out.println();
 
         System.out.println(
@@ -49,6 +53,7 @@ public class CombatManagerImpl implements CombatManager {
         int choice = sc.nextInt();
         switch (choice) {
             case 1 -> {
+                System.out.println();
                 System.out.println(hero.getName() + " attaque " + enemy.getName());
                 int diceResult = DiceRollerImpl.getInstance().throwDice();
                 if (diceResult == 6) {
@@ -121,6 +126,7 @@ public class CombatManagerImpl implements CombatManager {
 
     public void attackReturn(Hero hero, Enemy enemy, Scanner sc) {
 
+        System.out.println();
         System.out.println(enemy.getName() + " attaque " + hero.getName());
         int diceResult = DiceRollerImpl.getInstance().throwDice();
         if(diceResult == 6) {
@@ -129,7 +135,6 @@ public class CombatManagerImpl implements CombatManager {
         int enemyDmg = enemy.attack(hero, diceResult);
         System.out.println(enemy.getName() + " inflige : " + enemyDmg);
         hero.takeDamages(enemyDmg);
-
     }
 
 

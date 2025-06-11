@@ -20,7 +20,6 @@ public class CombatManagerImpl implements CombatManager {
     }
 
 
-
     // display begin phase of combat turn
     public void beginCombatTurn(Hero hero, Enemy enemy) {
 

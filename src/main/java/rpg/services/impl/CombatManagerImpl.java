@@ -153,7 +153,7 @@ public class CombatManagerImpl implements CombatManager {
         System.out.println(enemy.getName() + " attaque " + hero.getName());
         int diceResult = DiceRollerImpl.getInstance().throwDice();
         if(diceResult == 6) {
-            System.out.println("Attaque critique ! dommages doublés !");
+            System.out.println("Attaque critique ! dégâts doublés !");
         }
         int enemyDmg = enemy.attack(hero, diceResult);
         System.out.println(enemy.getName() + " inflige : " + enemyDmg + " dégâts");
